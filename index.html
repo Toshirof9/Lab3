@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Секундомір</title>
+</head>
+<body>
+<div id="display">0.00</div>
+<button id="start">start</button>
+<button id="reset">reset</button>
+<button id="stop">stop</button>
+<script>
+    const startBtn = document.querySelector("#start");
+    const stopBtn = document.querySelector("#stop");
+    const resetBtn = document.querySelector("#reset");
+    const display = document.querySelector("#display");
+
+    let intervalId;
+    let time = 0;
+
+    startBtn.addEventListener("click", function() {
+        intervalId = setInterval(function() {
+            time += 0.01;
+            display.innerHTML = time.toFixed(2);
+        }, 10);
+    });
+
+    stopBtn.addEventListener("click", function() {
+        clearInterval(intervalId);
+    });
+
+    resetBtn.addEventListener("click", function() {
+        clearInterval(intervalId);
+        time = 0;
+        display.innerHTML = time.toFixed(2);
+    });
+</script>
+</body>
+</html>
